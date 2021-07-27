@@ -190,12 +190,6 @@ EventScript_UseDive::
 	lockall
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndDive
-	end	
-
-EventScript_UseDive::
-	lockall
-	dofieldeffect FLDEFF_USE_DIVE
-	goto EventScript_EndDive
 	end
 
 EventScript_CantDive:: @ 8290B4E
@@ -221,13 +215,7 @@ EventScript_UseDiveUnderwater:: @ 8290B5A
 	lockall
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
-	end
-	
-EventScript_UseDiveUnderwater:: @ 8290B5A
-	lockall
-	dofieldeffect FLDEFF_USE_DIVE
-	goto EventScript_EndSurface
-	end		
+	end	
 
 EventScript_CantSurface:: @ 8290B99
 	lockall
