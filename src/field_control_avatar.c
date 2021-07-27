@@ -475,7 +475,7 @@ static bool32 TrySetupDiveEmergeScript(void)
 {
     if (gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
     {
-        ScriptContext1_SetupScript(EventScript_UseDiveUnderwater);
+        ScriptContext1_SetupScript(EventScript_DiveUnderwater);
         return TRUE;
     }
     return FALSE;
