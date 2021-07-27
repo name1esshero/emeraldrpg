@@ -404,4 +404,11 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_OLD_SEA_MAP] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
     // Return to field arrow
     [ITEM_FIELD_ARROW] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
+	// HM Items
+    [ITEM_SURFBOARD] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+	[ITEM_AXE] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+	[ITEM_HAMMER] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+	[ITEM_DIVING_SUIT] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+	[ITEM_LANTERN] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+	[ITEM_POWER_GLOVE] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
 };

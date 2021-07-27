@@ -55,28 +55,36 @@ u8 CreateFieldMoveTask(void)
 
 static void Task_DoFieldMove_Init(u8 taskId)
 {
-    u8 objEventId;
+   if (FieldEffectActiveListContains(FLDEFF_USE_DIG) || FieldEffectActiveListContains(FLDEFF_USE_TELEPORT)
+		|| FieldEffectActiveListContains(FLDEFF_SWEET_SCENT))
+	{
+		u8 objEventId;
 
-    ScriptContext2_Enable();
-    gPlayerAvatar.preventStep = TRUE;
-    objEventId = gPlayerAvatar.objectEventId;
-    if (!ObjectEventIsMovementOverridden(&gObjectEvents[objEventId])
-     || ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objEventId]))
-    {
-        if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
-        {
-            // Skip field move pose underwater
-            FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
-            gTasks[taskId].func = Task_DoFieldMove_WaitForMon;
-        }
-        else
-        {
-            // Do field move pose
-            SetPlayerAvatarFieldMove();
-            ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
-            gTasks[taskId].func = Task_DoFieldMove_ShowMonAfterPose;
-        }
-    }
+		ScriptContext2_Enable();
+		gPlayerAvatar.preventStep = TRUE;
+		objEventId = gPlayerAvatar.objectEventId;
+		if (!ObjectEventIsMovementOverridden(&gObjectEvents[objEventId])
+		 || ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objEventId]))
+		{
+			if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
+			{
+				// Skip field move pose underwater
+				FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+				gTasks[taskId].func = Task_DoFieldMove_WaitForMon;
+			}
+			else
+			{
+				// Do field move pose
+				SetPlayerAvatarFieldMove();
+				ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+				gTasks[taskId].func = Task_DoFieldMove_ShowMonAfterPose;
+			}
+		}
+	}
+	else
+	{
+		gTasks[taskId].func = Task_DoFieldMove_RunFunc;
+	}
 }
 
 static void Task_DoFieldMove_ShowMonAfterPose(u8 taskId)
@@ -134,7 +142,6 @@ bool8 SetUpFieldMove_RockSmash(void)
     else if (CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_BREAKABLE_ROCK) == TRUE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
-        gPostMenuFieldCallback = FieldCallback_RockSmash;
         return TRUE;
     }
     else

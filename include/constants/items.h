@@ -474,7 +474,15 @@
 #define ITEM_MAGMA_EMBLEM 375
 #define ITEM_OLD_SEA_MAP 376
 
-#define ITEMS_COUNT 377
+// HM Items
+#define ITEM_SURFBOARD 377
+#define ITEM_AXE 378
+#define ITEM_HAMMER 379
+#define ITEM_DIVING_SUIT 380
+#define ITEM_LANTERN 381
+#define ITEM_POWER_GLOVE 382
+
+#define ITEMS_COUNT 383
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS
