@@ -196,7 +196,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     }
     //if the next few lines are commented out then SELECT functionality is disabled. 
-    //(input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
+    //if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
     //    return TRUE;
     if (input->pressedSelectButton)
     {

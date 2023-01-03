@@ -1832,16 +1832,16 @@ const u8 gText_QuestComplete[] =_("complete");
 const u8 gText_QuestActive[] =_("active");
 
 //names
-const u8 gText_SideQuestName_1[] = _("Side Quest 1");
-const u8 gText_SideQuestName_2[] = _("Side Quest 2");
-const u8 gText_SideQuestName_3[] = _("Side Quest 3");
-const u8 gText_SideQuestName_4[] = _("Side Quest 4");
-const u8 gText_SideQuestName_5[] = _("Side Quest 5");
-const u8 gText_SideQuestName_6[] = _("Side Quest 6");
-const u8 gText_SideQuestName_7[] = _("Side Quest 7");
-const u8 gText_SideQuestName_8[] = _("Side Quest 8");
-const u8 gText_SideQuestName_9[] = _("Side Quest 9");
-const u8 gText_SideQuestName_10[] = _("Side Quest 10");
+const u8 gText_SideQuestName_1[] = _("Moving In");
+const u8 gText_SideQuestName_2[] = _("A Professor Appears");
+const u8 gText_SideQuestName_3[] = _("Your First Rival");
+const u8 gText_SideQuestName_4[] = _("A Sick Young Man");
+const u8 gText_SideQuestName_5[] = _("The Battle Frontier");
+const u8 gText_SideQuestName_6[] = _("Help The Devon Corporation");
+const u8 gText_SideQuestName_7[] = _("The Gym Challenge");
+const u8 gText_SideQuestName_8[] = _("Saving Peeko");
+const u8 gText_SideQuestName_9[] = _("Challenge At The Seashore House");
+const u8 gText_SideQuestName_10[] = _("Seeking Captain Stern");
 const u8 gText_SideQuestName_11[] = _("Side Quest 11");
 const u8 gText_SideQuestName_12[] = _("Side Quest 12");
 const u8 gText_SideQuestName_13[] = _("Side Quest 13");
@@ -1864,9 +1864,9 @@ const u8 gText_SideQuestName_29[] = _("Side Quest 29");
 const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 
 //descriptions
-const u8 gText_SideQuestDesc_1[] = _("Description 1");
-const u8 gText_SideQuestDesc_2[] = _("Description 2");
-const u8 gText_SideQuestDesc_3[] = _("Description 3");
+const u8 gText_SideQuestDesc_1[] = _("You just moved to Littleroot Town.\nTime to start an adventure.");
+const u8 gText_SideQuestDesc_2[] = _("Strange sounds are scaring a child.\nMaybe you should check it out!");
+const u8 gText_SideQuestDesc_3[] = _("Prof. Birch asked you to meet his\nkid.");
 const u8 gText_SideQuestDesc_4[] = _("Description 4");
 const u8 gText_SideQuestDesc_5[] = _("Description 5");
 const u8 gText_SideQuestDesc_6[] = _("Description 6");
@@ -1896,8 +1896,8 @@ const u8 gText_SideQuestDesc_29[] = _("Description 29");
 const u8 gText_SideQuestDesc_30[] = _("Description 30");
 
 //completed quest description
-const u8 gText_SideQuestDoneDesc_1[] = _("Completed Quest 1");
-const u8 gText_SideQuestDoneDesc_2[] = _("Completed Quest 2");
+const u8 gText_SideQuestDoneDesc_1[] = _("You visited the neighbors house and\nmet a potential friend.");
+const u8 gText_SideQuestDoneDesc_2[] = _("You saved the Professor and got a\nnew Pokemon.");
 const u8 gText_SideQuestDoneDesc_3[] = _("Completed Quest 3");
 const u8 gText_SideQuestDoneDesc_4[] = _("Completed Quest 4");
 const u8 gText_SideQuestDoneDesc_5[] = _("Completed Quest 5");
