@@ -35,6 +35,7 @@
 #include "constants/map_types.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "quests.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPrevMetatileBehavior = 0;
@@ -194,8 +195,15 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         ShowStartMenu();
         return TRUE;
     }
-    if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
+    //if the next few lines are commented out then SELECT functionality is disabled. 
+    //(input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
+    //    return TRUE;
+    if (input->pressedSelectButton)
+    {
+        PlaySE(SE_WIN_OPEN);
+        QuestMenu_Init(0, CB2_ReturnToField);
         return TRUE;
+    }
 
 #if DEBUG_OVERWORLD_MENU == TRUE && DEBUG_OVERWORLD_IN_MENU == FALSE
     if (input->input_field_1_2)
