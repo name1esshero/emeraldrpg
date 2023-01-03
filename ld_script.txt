@@ -343,6 +343,7 @@ SECTIONS {
         src/international_string_util.o(.text);
         src/pokemon_debug.o(.text);
         src/quests.o(.text);
+        src/mugshot.o(.text);
 
     } =0
 
@@ -711,6 +712,7 @@ SECTIONS {
         data/sound_data.o(.rodata);
         src/pokemon_debug.o(.rodata);
         src/quests.o(.rodata);
+        src/mugshot.o(.rodata);
     } =0
 
     song_data :
