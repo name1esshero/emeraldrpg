@@ -475,6 +475,8 @@ struct RankingHall2P
 
 // quest menu
 #include "constants/quests.h"
+#include "constants/items.h"
+#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
 struct SaveBlock2
 {
@@ -514,8 +516,9 @@ struct SaveBlock2
 #define QUEST_STATES 5 //Number of different quest states tracked in the saveblock
 
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
-    u8 subQuests[SUB_FLAGS_COUNT];
-}; 
+    u8 subQuests[SUB_FLAGS_COUNT]; 
+    /*0xF2C*/ u8 itemFlags[ITEM_FLAGS_COUNT];
+}; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 
