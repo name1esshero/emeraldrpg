@@ -151,3 +151,4 @@
 	.include "src/debug.o"
 	.include "src/quests.o"
 	.include "src/mugshot.o"
+	.include "src/rhh_copyright.o"
