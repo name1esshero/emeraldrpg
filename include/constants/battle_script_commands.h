@@ -252,6 +252,7 @@
 #define VARIOUS_JUMP_IF_MOTOR                       161
 #define VARIOUS_TEATIME_INVUL                       162
 #define VARIOUS_TEATIME_TARGETS                     163
+#define VARIOUS_USE_REVIVE_ON_OPPONENT              164
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

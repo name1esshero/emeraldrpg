@@ -2187,3 +2187,7 @@
 	.macro trysymbiosis
 	various BS_ATTACKER, VARIOUS_TRY_SYMBIOSIS
 	.endm
+
+	.macro usereviveonopponent
+	various 0, VARIOUS_USE_REVIVE_ON_OPPONENT
+	.endm
