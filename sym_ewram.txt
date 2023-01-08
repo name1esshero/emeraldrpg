@@ -152,3 +152,4 @@
 	.include "src/quests.o"
 	.include "src/mugshot.o"
 	.include "src/rhh_copyright.o"
+	.include "src/dexnav.o"
