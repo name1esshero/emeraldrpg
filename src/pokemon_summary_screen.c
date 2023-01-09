@@ -3459,8 +3459,8 @@ static void PrintRibbonCount(void)
 
 // Based on https://www.pokecommunity.com/showpost.php?p=10024409&postcount=21
 static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n) {
-  static const u8 textNatureMinus[] = _("{COLOR_HIGHLIGHT_SHADOW}{BLUE}{TRANSPARENT}{07}"); // Blue
-  static const u8 textNaturePlus[] = _("{COLOR_HIGHLIGHT_SHADOW}{05}{TRANSPARENT}{06}"); // Red
+  static const u8 textNatureMinus[] = _("{COLOR_HIGHLIGHT_SHADOW}{05}{TRANSPARENT}{06}"); // Red
+  static const u8 textNaturePlus[] = _("{COLOR_HIGHLIGHT_SHADOW}{BLUE}{TRANSPARENT}{07}"); // Blue
   static const u8 textNatureNone[] = _("{COLOR_HIGHLIGHT_SHADOW}{01}{TRANSPARENT}{DARK_GRAY}"); // Black
   u8 *txtPtr;
   if (natureMod == 0)

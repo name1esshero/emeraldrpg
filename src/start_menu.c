@@ -164,9 +164,9 @@ static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
-static const u8 gText_MenuDebug[] = _("DEBUG");
+static const u8 gText_MenuDebug[] = _("CHEATS");
 
-static const u8 sText_QuestMenu[] = _("QUESTS");
+static const u8 sText_QuestMenu[] = _("JOURNAL");
 
 static const struct MenuAction sStartMenuItems[] =
 {
@@ -317,16 +317,13 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
 
-    AddStartMenuAction(MENU_ACTION_BAG);
+    //AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
-    
-    if (FlagGet(FLAG_SYS_QUEST_MENU_GET))
-        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
-    
+    AddStartMenuAction(MENU_ACTION_QUEST_MENU);  
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
@@ -334,17 +331,18 @@ static void BuildNormalStartMenu(void)
 
 static void BuildDebugStartMenu(void)
 {
-    AddStartMenuAction(MENU_ACTION_DEBUG);
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
+    //AddStartMenuAction(MENU_ACTION_BAG);
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
     AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_QUEST_MENU); 
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
+    AddStartMenuAction(MENU_ACTION_DEBUG);
 }
 
 static void BuildSafariZoneStartMenu(void)
@@ -352,8 +350,9 @@ static void BuildSafariZoneStartMenu(void)
     AddStartMenuAction(MENU_ACTION_RETIRE_SAFARI);
     AddStartMenuAction(MENU_ACTION_POKEDEX);
     AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
+    //AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_QUEST_MENU); 
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
@@ -361,7 +360,7 @@ static void BuildSafariZoneStartMenu(void)
 static void BuildLinkModeStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
+    //AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
     {
@@ -376,7 +375,7 @@ static void BuildLinkModeStartMenu(void)
 static void BuildUnionRoomStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
+    //AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
     {
@@ -393,6 +392,7 @@ static void BuildBattlePikeStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEDEX);
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_QUEST_MENU); 
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
@@ -402,6 +402,7 @@ static void BuildBattlePyramidStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PYRAMID_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_QUEST_MENU); 
     AddStartMenuAction(MENU_ACTION_REST_FRONTIER);
     AddStartMenuAction(MENU_ACTION_RETIRE_FRONTIER);
     AddStartMenuAction(MENU_ACTION_OPTION);
