@@ -200,15 +200,27 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         ShowStartMenu();
         return TRUE;
     }
-    //if the next few lines are commented out then SELECT functionality is disabled. 
+    //if the next few lines are commented out then SELECT functionality is disabled.
+
     //if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
     //    return TRUE;
+
+    //these next couple lines open the bag when select is pressed. 
     if (input->pressedSelectButton)
     {
         PlaySE(SE_WIN_OPEN);
-        QuestMenu_Init(0, CB2_ReturnToField);
+        CleanupOverworldWindowsAndTilemaps();
+        GoToBagMenu(ITEMMENULOCATION_FIELD, POCKETS_COUNT, CB2_ReturnToField);
         return TRUE;
     }
+    //this next command opens the quest menu when select is pressed.
+    //if (input->pressedSelectButton)
+    //{
+    //    PlaySE(SE_WIN_OPEN);
+    //    CleanupOverworldWindowsAndTilemaps();
+    //    QuestMenu_Init(0, CB2_ReturnToField);
+    //    return TRUE;
+    //}
 
     if (input->input_field_1_6)
     {
