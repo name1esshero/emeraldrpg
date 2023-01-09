@@ -222,12 +222,12 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     //    return TRUE;
     //}
 
-    if (input->input_field_1_6)
-    {
-        PlaySE(SE_WIN_OPEN);
-        CreateTask(Task_OpenDexNav, 0);
-        return TRUE;
-    }
+    //if (input->input_field_1_6)
+    //{
+    //    PlaySE(SE_WIN_OPEN);
+    //    CreateTask(Task_OpenDexNav, 0);
+    //    return TRUE;
+    //}
 #if DEBUG_OVERWORLD_MENU == TRUE && DEBUG_OVERWORLD_IN_MENU == FALSE
     if (input->input_field_1_2)
     {

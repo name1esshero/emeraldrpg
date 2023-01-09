@@ -2368,7 +2368,7 @@ void Task_OpenDexNav(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        DexNavGuiInit(CB2_ReturnToField);
+        DexNavGuiInit(CB2_OpenPokedex);
         DestroyTask(taskId);
     }
 }

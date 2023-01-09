@@ -48,6 +48,7 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "dexnav.h"
 #ifdef TX_RANDOMIZER_AND_CHALLENGES
     //#include "tx_randomizer_and_challenges.h"
 #endif
@@ -2163,6 +2164,10 @@ static void Task_HandlePokedexInput(u8 taskId)
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
             gTasks[taskId].func = Task_ClosePokedex;
             PlaySE(SE_PC_OFF);
+        }
+        else if (JOY_NEW(R_BUTTON))
+        {
+            CreateTask(Task_OpenDexNav, 0);
         }
         else
         {
