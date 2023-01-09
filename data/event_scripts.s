@@ -1062,9 +1062,67 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/scripts/move_tutors.inc"
 	.include "data/scripts/trainer_hill.inc"
 	.include "data/scripts/test_signpost.inc"
-  .include "data/scripts/follower.inc"
+    .include "data/scripts/follower.inc"
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
     .include "data/scripts/dexnav.inc"
     
+EventScript_DoWonderTrade::
+	special ChoosePartyMon
+	waitstate
+	compare VAR_0x8004, PARTY_SIZE
+	goto_if_ge EventScript_End
+	copyvar VAR_0x8005, VAR_0x8004
+	special CreateWonderTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox EventScript_DoWonderTrade_Text_WannaDoAnotherWonderTrade, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq EventScript_DoWonderTrade
+	msgbox EventScript_DoWonderTrade_Text_Done, MSGBOX_DEFAULT
+	closemessage
+EventScript_End:
+	end
+
+EventScript_DoWonderTrade_Text_WannaDoAnotherWonderTrade:
+	.string "Do you want to do\nanother Wonder Trade?$"
+
+EventScript_DoWonderTrade_Text_Done:
+	.string "Enjoy your new Pokémon.$"
+
+EventScript_SelfTrade::
+	lock
+	faceplayer
+	msgbox EventScript_SelfTrade_Text_IllTradeIfYouWant, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq EventScript_SelfTrade_DeclineTrade
+	special ChoosePartyMon
+	waitstate
+	compare VAR_0x8004, 255
+	goto_if_eq EventScript_SelfTrade_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x8004
+	setvar VAR_0x8004, 6
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox EventScript_SelfTrade_Text_ComeBack, MSGBOX_DEFAULT
+	release
+	end
+
+EventScript_SelfTrade_DeclineTrade::
+	msgbox EventScript_SelfTrade_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	release
+	end
+
+EventScript_SelfTrade_Text_IllTradeIfYouWant:
+	.string "I will help you\n"
+	.string "trade a pokemon\p"
+	.string "with yourself!$"
+
+EventScript_SelfTrade_Text_ComeBack:
+	.string "Come back anytime.$"
+
+EventScript_SelfTrade_Text_YouDontWantToThatsOkay:
+	.string "You dont want to?\n"
+    .string "Okay come back anytime$"
