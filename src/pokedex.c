@@ -2167,6 +2167,9 @@ static void Task_HandlePokedexInput(u8 taskId)
         }
         else if (JOY_NEW(R_BUTTON))
         {
+            TryDestroyStatBars(); //HGSS_Ui
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+            gTasks[taskId].func = Task_ClosePokedex;
             CreateTask(Task_OpenDexNav, 0);
         }
         else
