@@ -164,9 +164,9 @@ static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 static const struct WindowTemplate sPyramidFloorWindowTemplate_2 = {0, 1, 1, 0xA, 4, 0xF, 8};
 static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC, 4, 0xF, 8};
 
-static const u8 gText_MenuDebug[] = _("CHEATS");
+static const u8 gText_MenuDebug[] = _("Cheats");
 
-static const u8 sText_QuestMenu[] = _("JOURNAL");
+static const u8 sText_QuestMenu[] = _("Journal");
 
 static const struct MenuAction sStartMenuItems[] =
 {
