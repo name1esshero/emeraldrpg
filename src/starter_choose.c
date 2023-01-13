@@ -24,7 +24,7 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
-#define STARTER_MON_COUNT   3
+#define STARTER_MON_COUNT   6
 
 // Position of the sprite of the selected starter Pokemon
 #define STARTER_PKMN_POS_X (DISPLAY_WIDTH / 2)
@@ -45,7 +45,6 @@ static void Task_MoveStarterChooseCursor(u8 taskId);
 static void Task_CreateStarterLabel(u8 taskId);
 static void CreateStarterPokemonLabel(u8 selection);
 static u8 CreatePokemonFrontSprite(u16 species, u8 x, u8 y);
-static void SpriteCB_SelectionHand(struct Sprite *sprite);
 static void SpriteCB_Pokeball(struct Sprite *sprite);
 static void SpriteCB_StarterPokemon(struct Sprite *sprite);
 
@@ -103,23 +102,32 @@ static const struct WindowTemplate sWindowTemplate_StarterLabel =
 
 static const u8 sPokeballCoords[STARTER_MON_COUNT][2] =
 {
-    {60, 64},
-    {120, 88},
-    {180, 64},
+    {45, 88},
+    {75, 88},
+    {105, 88},
+    {135, 88},
+    {165, 88},
+    {195, 88},
 };
 
 static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
 {
-    {0, 9},
-    {16, 10},
-    {8, 4},
+    {9, 4},
+    {9, 4},
+    {9, 4},
+    {9, 4},
+    {9, 4},
+    {9, 4},
 };
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
-    SPECIES_TREECKO,
-    SPECIES_TORCHIC,
-    SPECIES_MUDKIP,
+    SPECIES_MAGBY,
+    SPECIES_TOGEPI,
+    SPECIES_RIOLU,
+    SPECIES_ELEKID,
+    SPECIES_AZURILL,
+    SPECIES_BUDEW,
 };
 
 static const struct BgTemplate sBgTemplates[3] =
@@ -153,7 +161,7 @@ static const struct BgTemplate sBgTemplates[3] =
     },
 };
 
-static const u8 sTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_6};
 
 static const struct OamData sOam_Hand =
 {
@@ -319,17 +327,6 @@ static const struct SpritePalette sSpritePalettes_StarterChoose[] =
     {},
 };
 
-static const struct SpriteTemplate sSpriteTemplate_Hand =
-{
-    .tileTag = TAG_POKEBALL_SELECT,
-    .paletteTag = TAG_POKEBALL_SELECT,
-    .oam = &sOam_Hand,
-    .anims = sAnims_Hand,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCB_SelectionHand
-};
-
 static const struct SpriteTemplate sSpriteTemplate_Pokeball =
 {
     .tileTag = TAG_POKEBALL_SELECT,
@@ -447,9 +444,9 @@ void CB2_ChooseStarter(void)
     taskId = CreateTask(Task_StarterChoose, 0);
     gTasks[taskId].tStarterSelection = 1;
 
-    // Create hand sprite
-    spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 2);
-    gSprites[spriteId].data[0] = taskId;
+    //Create hand sprite
+    //spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 2);
+    //gSprites[spriteId].data[0] = taskId;
 
     // Create three Pokeball sprites
     spriteId = CreateSprite(&sSpriteTemplate_Pokeball, sPokeballCoords[0][0], sPokeballCoords[0][1], 2);
@@ -463,6 +460,18 @@ void CB2_ChooseStarter(void)
     spriteId = CreateSprite(&sSpriteTemplate_Pokeball, sPokeballCoords[2][0], sPokeballCoords[2][1], 2);
     gSprites[spriteId].sTaskId = taskId;
     gSprites[spriteId].sBallId = 2;
+
+    spriteId = CreateSprite(&sSpriteTemplate_Pokeball, sPokeballCoords[3][0], sPokeballCoords[3][1], 2);
+    gSprites[spriteId].sTaskId = taskId;
+    gSprites[spriteId].sBallId = 3;
+
+    spriteId = CreateSprite(&sSpriteTemplate_Pokeball, sPokeballCoords[4][0], sPokeballCoords[4][1], 2);
+    gSprites[spriteId].sTaskId = taskId;
+    gSprites[spriteId].sBallId = 4;
+
+    spriteId = CreateSprite(&sSpriteTemplate_Pokeball, sPokeballCoords[5][0], sPokeballCoords[5][1], 2);
+    gSprites[spriteId].sTaskId = taskId;
+    gSprites[spriteId].sBallId = 5;
 
     sStarterLabelWindowId = WINDOW_NONE;
 }
@@ -640,15 +649,6 @@ static u8 CreatePokemonFrontSprite(u16 species, u8 x, u8 y)
     return spriteId;
 }
 
-static void SpriteCB_SelectionHand(struct Sprite *sprite)
-{
-    // Float up and down above selected pokeball
-    sprite->x = sCursorCoords[gTasks[sprite->data[0]].tStarterSelection][0];
-    sprite->y = sCursorCoords[gTasks[sprite->data[0]].tStarterSelection][1];
-    sprite->y2 = Sin(sprite->data[1], 8);
-    sprite->data[1] = (u8)(sprite->data[1]) + 4;
-}
-
 static void SpriteCB_Pokeball(struct Sprite *sprite)
 {
     // Animate pokeball if currently selected
@@ -662,9 +662,9 @@ static void SpriteCB_StarterPokemon(struct Sprite *sprite)
 {
     // Move sprite to upper center of screen
     if (sprite->x > STARTER_PKMN_POS_X)
-        sprite->x -= 4;
+        sprite->x -= 3;
     if (sprite->x < STARTER_PKMN_POS_X)
-        sprite->x += 4;
+        sprite->x += 3;
     if (sprite->y > STARTER_PKMN_POS_Y)
         sprite->y -= 2;
     if (sprite->y < STARTER_PKMN_POS_Y)

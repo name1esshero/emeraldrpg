@@ -2027,6 +2027,18 @@ $(OBJEVENTGFXDIR)/pokemon/kricketot.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon/kricketune.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4	
 
+$(OBJEVENTGFXDIR)/pokemon/budew.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/pokemon/roserade.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/pokemon/riolu.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/pokemon/lucario.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/pokemon/dialga.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
