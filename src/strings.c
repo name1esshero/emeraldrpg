@@ -1835,9 +1835,9 @@ const u8 gText_Berries[] = _("BERRIES");
 
 //// side quest data
 //generic strings
-const u8 gText_QuestAnnounce[] = _("The quest '{STR_VAR_1}'\nis now {STR_VAR_2}.");
-const u8 gText_QuestComplete[] =_("complete");
-const u8 gText_QuestActive[] =_("active");
+const u8 gText_QuestAnnounce[] = _("New mission '{STR_VAR_1}'\nhas {STR_VAR_2}.");
+const u8 gText_QuestComplete[] =_("completed");
+const u8 gText_QuestActive[] =_("started");
 
 //names
 const u8 gText_SideQuestName_1[] = _("Moving In");
@@ -1936,8 +1936,8 @@ const u8 gText_SideQuestDoneDesc_29[] = _("Completed Quest 29");
 const u8 gText_SideQuestDoneDesc_30[] = _("Completed Quest 30");
 
 //map
-const u8 gText_SideQuestMap1[] = _("LittleRoot Town");
-const u8 gText_SideQuestMap2[] = _("LittleRoot Town");
+const u8 gText_SideQuestMap1[] = _("Littleroot Town");
+const u8 gText_SideQuestMap2[] = _("Littleroot Town");
 const u8 gText_SideQuestMap3[] = _("Route 103");
 const u8 gText_SideQuestMap4[] = _("Map 4");
 const u8 gText_SideQuestMap5[] = _("Map 5");
