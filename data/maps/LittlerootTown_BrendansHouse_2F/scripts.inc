@@ -90,6 +90,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanNorth
 	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCNorth
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth::
@@ -102,6 +103,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanSouth
 	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCSouth
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanWest::
@@ -114,6 +116,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanWest::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanWest
 	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCWest
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanEast::
@@ -125,6 +128,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanEast::
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCEast
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters:

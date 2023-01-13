@@ -270,6 +270,7 @@ LittlerootTown_EventScript_GoSaveBirch::
 	closemessage
 	applymovement LOCALID_TWIN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	startquest QUEST_2
 	setvar VAR_LITTLEROOT_TOWN_STATE, 2
 	release
 	end
@@ -388,6 +389,7 @@ LittlerootTown_EventScript_GoSaveBirchTrigger::
 	closemessage
 	applymovement LOCALID_TWIN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	startquest QUEST_2
 	setvar VAR_LITTLEROOT_TOWN_STATE, 2
 	releaseall
 	end

@@ -1936,9 +1936,9 @@ const u8 gText_SideQuestDoneDesc_29[] = _("Completed Quest 29");
 const u8 gText_SideQuestDoneDesc_30[] = _("Completed Quest 30");
 
 //map
-const u8 gText_SideQuestMap1[] = _("Map 1");
-const u8 gText_SideQuestMap2[] = _("Map 2");
-const u8 gText_SideQuestMap3[] = _("Map 3");
+const u8 gText_SideQuestMap1[] = _("LittleRoot Town");
+const u8 gText_SideQuestMap2[] = _("LittleRoot Town");
+const u8 gText_SideQuestMap3[] = _("Route 103");
 const u8 gText_SideQuestMap4[] = _("Map 4");
 const u8 gText_SideQuestMap5[] = _("Map 5");
 const u8 gText_SideQuestMap6[] = _("Map 6");

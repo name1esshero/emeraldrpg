@@ -89,6 +89,7 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth::
@@ -101,6 +102,7 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMaySouth
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest::
@@ -112,6 +114,7 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest::
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast::
@@ -124,6 +127,7 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast
 	waitmovement 0
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_Movement_MayEnters:
