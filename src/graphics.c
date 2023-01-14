@@ -1361,6 +1361,7 @@ const u32 gBattleAnimBackgroundImageMuddyWater_Pal[] = INCBIN_U32("graphics/batt
 const u32 gEnemyMonShadow_Gfx[] = INCBIN_U32("graphics/battle_interface/enemy_mon_shadow.4bpp.lz");
 
 const u32 gBattleInterface_BallStatusBarGfx[] = INCBIN_U32("graphics/battle_interface/ball_status_bar.4bpp.lz");
+const u8 gNuzlockeFirstEncounterIndicatorGfx[] = INCBIN_U8("graphics/battle_interface/nuzlocke_indicator.4bpp");
 
 const u32 gBattleAnimBgImage_Ghost[] = INCBIN_U32("graphics/battle_anims/backgrounds/ghost.4bpp.lz");
 const u32 gBattleAnimBgPalette_Ghost[] = INCBIN_U32("graphics/battle_anims/backgrounds/ghost.gbapal.lz");

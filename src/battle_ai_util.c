@@ -552,9 +552,9 @@ void SetBattlerData(u8 battlerId)
         if (BATTLE_HISTORY->abilities[battlerId] != ABILITY_NONE)
             gBattleMons[battlerId].ability = BATTLE_HISTORY->abilities[battlerId];
         // Check if mon can only have one ability.
-        else if (gSpeciesInfo[gBattleMons[battlerId].species].abilities[1] == ABILITY_NONE
-                 || gSpeciesInfo[gBattleMons[battlerId].species].abilities[1] == gSpeciesInfo[gBattleMons[battlerId].species].abilities[0])
-            gBattleMons[battlerId].ability = gSpeciesInfo[gBattleMons[battlerId].species].abilities[0];
+        else if (GetAbilityBySpecies(gBattleMons[battlerId].species, 1) == ABILITY_NONE
+                 || GetAbilityBySpecies(gBattleMons[battlerId].species, 1) == GetAbilityBySpecies(gBattleMons[battlerId].species, 0))
+            gBattleMons[battlerId].ability = GetAbilityBySpecies(gBattleMons[battlerId].species, 0);
         // The ability is unknown.
         else
             gBattleMons[battlerId].ability = ABILITY_NONE;
@@ -1183,12 +1183,12 @@ s32 AI_GetAbility(u32 battlerId)
         return knownAbility;
 
     // Else, guess the ability
-    if (gSpeciesInfo[gBattleMons[battlerId].species].abilities[0] != ABILITY_NONE)
+    if (GetAbilityBySpecies(gBattleMons[battlerId].species, 0) != ABILITY_NONE)
     {
         u16 abilityGuess = ABILITY_NONE;
         while (abilityGuess == ABILITY_NONE)
         {
-            abilityGuess = gSpeciesInfo[gBattleMons[battlerId].species].abilities[Random() % NUM_ABILITY_SLOTS];
+            abilityGuess = GetAbilityBySpecies(gBattleMons[battlerId].species, Random() % NUM_ABILITY_SLOTS);
         }
 
         return abilityGuess;

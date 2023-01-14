@@ -18,6 +18,8 @@
 #include "constants/battle_move_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/species.h"
+#include "tx_randomizer_and_challenges.h"
 
 // this file's functions
 static bool8 HasSuperEffectiveMoveAgainstOpponents(bool8 noRng);
@@ -209,9 +211,9 @@ static bool8 FindMonThatAbsorbsOpponentsMove(void)
 
         species = GetMonData(&party[i], MON_DATA_SPECIES);
         if (GetMonData(&party[i], MON_DATA_ABILITY_NUM) != 0)
-            monAbility = gSpeciesInfo[species].abilities[1];
+            monAbility = GetAbilityBySpecies(species, 1);
         else
-            monAbility = gSpeciesInfo[species].abilities[0];
+            monAbility = GetAbilityBySpecies(species, 0);
 
         if (absorbingTypeAbility == monAbility && Random() & 1)
         {
@@ -583,9 +585,9 @@ static bool8 FindMonWithFlagsAndSuperEffective(u16 flags, u8 moduloPercent)
 
         species = GetMonData(&party[i], MON_DATA_SPECIES);
         if (GetMonData(&party[i], MON_DATA_ABILITY_NUM) != 0)
-            monAbility = gSpeciesInfo[species].abilities[1];
+            monAbility = GetAbilityBySpecies(species, 1);
         else
-            monAbility = gSpeciesInfo[species].abilities[0];
+            monAbility = GetAbilityBySpecies(species, 0);
 
         CalcPartyMonTypeEffectivenessMultiplier(gLastLandedMoves[gActiveBattler], species, monAbility);
         if (gMoveResultFlags & flags)
@@ -1024,6 +1026,9 @@ static bool8 ShouldUseItem(void)
     s32 i;
     u8 validMons = 0;
     bool8 shouldUse = FALSE;
+
+    if (gSaveBlock1Ptr->tx_Challenges_NoItemTrainer) //tx_randomizer_and_challenges
+        return FALSE;
 
     // If teaming up with player and Pokemon is on the right, or Pokemon is currently held by Sky Drop
     if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT)

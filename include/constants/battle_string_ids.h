@@ -633,8 +633,13 @@
 #define STRINGID_ATTACKERLOSTELECTRICTYPE             631
 #define STRINGID_ATTACKERSWITCHEDSTATWITHTARGET       632
 #define STRINGID_PKMNSITEMREVIVED                     633
+//tx_randomizer_and_challenges
+#define STRINGID_ONETYPECAPTUREBLOCKED                634
+#define STRINGID_NUZLOCKECAPTUREBLOCKED               635
+#define STRINGID_SPECIESCLAUSECAPTUREBLOCKED          636
+#define STRINGID_SAMESPECIESCAPTUREBLOCKED            637
 
-#define BATTLESTRINGS_COUNT                           634
+#define BATTLESTRINGS_COUNT                           638
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

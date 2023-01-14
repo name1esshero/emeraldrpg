@@ -642,7 +642,6 @@ static void SetBattlePartyIds(void)
                             break;
                         }
                     }
-
                     // No valid mons were found. Add the empty slot.
                     if (gBattlerPartyIndexes[i - 2] == 0)
                         gBattlerPartyIndexes[i] = 1;

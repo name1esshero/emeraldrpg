@@ -49,9 +49,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "dexnav.h"
-#ifdef TX_RANDOMIZER_AND_CHALLENGES
-    //#include "tx_randomizer_and_challenges.h"
-#endif
+#include "tx_randomizer_and_challenges.h"
 
 enum
 {
@@ -5438,8 +5436,8 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
                 {
                     species = NationalPokedexNumToSpecies(sPokedexView->pokedexList[i].dexNum);
 
-                    types[0] = gSpeciesInfo[species].type1;
-                    types[1] = gSpeciesInfo[species].type2;
+                    types[0] = GetTypeBySpecies(species, 1); //tx_randomizer_and_challenges
+                    types[1] = GetTypeBySpecies(species, 2); //tx_randomizer_and_challenges
                     if (types[0] == type1 || types[1] == type1)
                     {
                         sPokedexView->pokedexList[resultsCount] = sPokedexView->pokedexList[i];
@@ -5456,8 +5454,8 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
                 {
                     species = NationalPokedexNumToSpecies(sPokedexView->pokedexList[i].dexNum);
 
-                    types[0] = gSpeciesInfo[species].type1;
-                    types[1] = gSpeciesInfo[species].type2;
+                    types[0] = GetTypeBySpecies(species, 1); //tx_randomizer_and_challenges
+                    types[1] = GetTypeBySpecies(species, 2); //tx_randomizer_and_challenges
                     if ((types[0] == type1 && types[1] == type2) || (types[0] == type2 && types[1] == type1))
                     {
                         sPokedexView->pokedexList[resultsCount] = sPokedexView->pokedexList[i];

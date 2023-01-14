@@ -351,6 +351,8 @@ SECTIONS {
         src/rhh_copyright.o(.text);
 		src/dexnav.o(.text);
         src/wonder_trade.o(.text);
+        src/tx_rac_menu.o(.text);
+        src/tx_randomizer_and_challenges.o(.text);
     } =0
 
     script_data :
@@ -611,6 +613,7 @@ SECTIONS {
 		src/battle_ai_util.o(.rodata);
         src/trader.o(.rodata);
         src/starter_choose.o(.rodata);
+        src/event_data.o(.rodata);
         src/wallclock.o(.rodata);
         src/pokeblock.o(.rodata);
         src/fldeff_flash.o(.rodata);
@@ -723,6 +726,8 @@ SECTIONS {
         src/rhh_copyright.o(.rodata);
 		src/dexnav.o(.rodata);
         src/wonder_trade.o(.rodata);
+        src/tx_rac_menu.o(.rodata);
+        src/tx_randomizer_and_challenges.o(.rodata);
     } =0
 
     song_data :
