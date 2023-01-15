@@ -163,7 +163,11 @@ EventScript_NoRoomToPickUpItem::
 EventScript_HiddenItemScript::
 	lockall
 	waitse
+<<<<<<< HEAD
+	copyvar VAR_0x8006, VAR_0x8005
+=======
 	copyvar VAR_0x8006, ITEMID
+>>>>>>> 88c1ed28db2c6f51e8451c51a868545120da1579
 	specialvar VAR_RESULT, IsRandomItemsActivated
 	call_if_eq VAR_RESULT, TRUE, Std_RandomItemHidden
 	additem VAR_0x8005

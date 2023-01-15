@@ -4170,10 +4170,3 @@ u8 Script_TryGainNewFanFromCounter(void)
 {
     return TryGainNewFanFromCounter(gSpecialVar_0x8004);
 }
-
-void SetCustomNature(void)
-{
-    bool32 Tr = TRUE;
-    SetMonData(&gPlayerParty[0], MON_DATA_HAS_CUSTOM_NATURE, &Tr);
-    SetMonData(&gPlayerParty[0], MON_DATA_CUSTOM_NATURE_ID, &gSpecialVar_0x8000);
-}
