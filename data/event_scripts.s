@@ -1067,8 +1067,17 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
     .include "data/scripts/dexnav.inc"
-    
+   
 EventScript_DoWonderTrade::
+	lock
+	faceplayer
+	msgbox EventScript_WonderTrade_Text_Want_To_Trade, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq EventScript_SelfTrade_DeclineTrade
+	compare VAR_RESULT, YES
+	goto_if_eq EventScript_DoWonderTrade1
+
+EventScript_DoWonderTrade1::
 	special ChoosePartyMon
 	waitstate
 	compare VAR_0x8004, PARTY_SIZE
@@ -1079,17 +1088,22 @@ EventScript_DoWonderTrade::
 	waitstate
 	msgbox EventScript_DoWonderTrade_Text_WannaDoAnotherWonderTrade, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq EventScript_DoWonderTrade
-	msgbox EventScript_DoWonderTrade_Text_Done, MSGBOX_DEFAULT
-	closemessage
+	goto_if_eq EventScript_DoWonderTrade1
+	compare VAR_RESULT, NO
+	goto_if_eq EventScript_SelfTrade_DeclineTrade
+	release
+	end
+
 EventScript_End:
+	msgbox EventScript_SelfTrade_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	release
 	end
 
 EventScript_DoWonderTrade_Text_WannaDoAnotherWonderTrade:
 	.string "Do you want to do\nanother Wonder Trade?$"
 
-EventScript_DoWonderTrade_Text_Done:
-	.string "Enjoy your new Pokémon.$"
+EventScript_WonderTrade_Text_Want_To_Trade:
+	.string "Would you like to\nperform a Wonder Trade?$"
 
 EventScript_SelfTrade::
 	lock

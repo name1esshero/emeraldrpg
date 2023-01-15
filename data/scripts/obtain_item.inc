@@ -2,6 +2,7 @@
 .set AMOUNT, VAR_0x8001
 
 Std_ObtainItem::
+	copyvar VAR_0x8006, ITEMID
 	specialvar VAR_RESULT, IsRandomItemsActivated
 	call_if_eq VAR_RESULT, TRUE, Std_RandomItem
 	additem ITEMID, AMOUNT
@@ -105,6 +106,7 @@ Std_FindItem::
 	lock
 	faceplayer
 	waitse
+	copyvar VAR_0x8006, ITEMID
 	specialvar VAR_RESULT, IsRandomItemsActivated
 	call_if_eq VAR_RESULT, TRUE, Std_RandomItem
 	copyvar VAR_0x8004, ITEMID
@@ -161,6 +163,7 @@ EventScript_NoRoomToPickUpItem::
 EventScript_HiddenItemScript::
 	lockall
 	waitse
+	copyvar VAR_0x8006, ITEMID
 	specialvar VAR_RESULT, IsRandomItemsActivated
 	call_if_eq VAR_RESULT, TRUE, Std_RandomItemHidden
 	additem VAR_0x8005

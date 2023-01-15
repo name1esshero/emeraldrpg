@@ -11377,6 +11377,12 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
     case MON_DATA_HELD_ITEM:
         retVal = substruct0->heldItem;
         break;
+    case MON_DATA_HAS_CUSTOM_NATURE:
+        retVal = substruct0->hasCustomNature;
+        break;
+    case MON_DATA_CUSTOM_NATURE_ID:
+        retVal = substruct0->customNatureId;
+        break;
     case MON_DATA_EXP:
         retVal = substruct0->experience;
         break;
@@ -11760,6 +11766,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     }
     case MON_DATA_HELD_ITEM:
         SET16(substruct0->heldItem);
+        break;
+    case MON_DATA_HAS_CUSTOM_NATURE:
+        SET16(substruct0->hasCustomNature);
+        break;
+    case MON_DATA_CUSTOM_NATURE_ID:
+        SET16(substruct0->customNatureId);
         break;
     case MON_DATA_EXP:
         SET32(substruct0->experience);
@@ -13219,7 +13231,10 @@ u8 *UseStatIncreaseItem(u16 itemId)
 
 u8 GetNature(struct Pokemon *mon)
 {
-    return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
+    if (GetMonData(mon, MON_DATA_HAS_CUSTOM_NATURE, NULL) == TRUE)
+        return GetMonData(mon, MON_DATA_CUSTOM_NATURE_ID, NULL);
+    else
+        return GetMonData(mon, MON_DATA_PERSONALITY, 0) % NUM_NATURES;
 }
 
 u8 GetNatureFromPersonality(u32 personality)
