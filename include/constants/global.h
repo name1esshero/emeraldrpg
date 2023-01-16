@@ -50,9 +50,9 @@
 // capacities of various saveblock objects
 #define DAYCARE_MON_COUNT 2
 #define POKEBLOCKS_COUNT 40
-#define OBJECT_EVENTS_COUNT 16
+#define OBJECT_EVENTS_COUNT 20
 #define MAIL_COUNT (5 + PARTY_SIZE)
-#define SECRET_BASES_COUNT 10
+#define SECRET_BASES_COUNT 5
 #define TV_SHOWS_COUNT 5
 #define POKE_NEWS_COUNT 16
 #define PC_ITEMS_COUNT 50
