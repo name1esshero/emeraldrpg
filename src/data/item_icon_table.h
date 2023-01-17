@@ -805,4 +805,11 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_SAPPHIRE] = {gItemIcon_Gem, gItemIconPalette_Sapphire},
     // Return to field arrow
     [ITEMS_COUNT] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
+	// HM Items
+    [ITEM_SURFBOARD] = {gItemIcon_Surfboard, gItemIconPalette_Surfboard},
+	[ITEM_AXE] = {gItemIcon_Axe, gItemIconPalette_Axe},
+	[ITEM_HAMMER] = {gItemIcon_Pickaxe, gItemIconPalette_Pickaxe},
+	[ITEM_DIVING_SUIT] = {gItemIcon_Divingsuit, gItemIconPalette_Divingsuit},
+	[ITEM_LANTERN] = {gItemIcon_Lantern, gItemIconPalette_Lantern},
+	[ITEM_POWER_GLOVE] = {gItemIcon_Powerglove, gItemIconPalette_Powerglove},
 };
