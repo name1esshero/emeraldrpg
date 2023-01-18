@@ -81,7 +81,10 @@ PlayersHouse_2F_EventScript_MomComesUpstairsMale::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_MOM_HAPPY
+	callnative DrawMugshot
 	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsMale
 	waitmovement 0
@@ -94,7 +97,10 @@ PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SMILE
+	callnative DrawMugshot
 	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsFemale
 	waitmovement 0
@@ -156,7 +162,10 @@ PlayersHouse_1F_EventScript_PetalburgGymReportMale::
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerApproachTVForGymMale
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_INTERVIEWER, FALSE
+	setvar VAR_0x8000, MUGSHOT_MOM_HAPPY
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_MaybeDadWillBeOn, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	applymovement VAR_0x8005, PlayersHouse_1F_Movement_MomMakeRoomToSeeTVMale
 	waitmovement 0
@@ -165,8 +174,14 @@ PlayersHouse_1F_EventScript_PetalburgGymReportMale::
 	call PlayersHouse_1F_EventScript_WatchGymBroadcast
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_MOM_FROWN
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_ItsOverWeMissedHim, MSGBOX_DEFAULT
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	setvar VAR_TEMP_1, 1
 	applymovement VAR_0x8005, PlayersHouse_1F_Movement_MomReturnToSeatMale
@@ -181,7 +196,10 @@ PlayersHouse_1F_EventScript_PetalburgGymReportFemale::
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerApproachTVForGymFemale
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_INTERVIEWER, FALSE
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_HAPPY
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_MaybeDadWillBeOn, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	applymovement VAR_0x8005, PlayersHouse_1F_Movement_MomMakeRoomToSeeTVFemale
 	waitmovement 0
@@ -190,8 +208,14 @@ PlayersHouse_1F_EventScript_PetalburgGymReportFemale::
 	call PlayersHouse_1F_EventScript_WatchGymBroadcast
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_ItsOverWeMissedHim, MSGBOX_DEFAULT
+	callnative ClearMugshot
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SMILE
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	setvar VAR_TEMP_1, 1
 	applymovement VAR_0x8005, PlayersHouse_1F_Movement_MomReturnToSeatFemale
@@ -205,7 +229,24 @@ PlayersHouse_1F_EventScript_MomNoticeGymBroadcast::
 	waitmovement 0
 	applymovement VAR_0x8005, Common_Movement_Delay48
 	waitmovement 0
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, PlayersHouse_1F_EventScript_MomNoticeGymBroadcast_Male
+	goto_if_eq VAR_RESULT, FEMALE, PlayersHouse_1F_EventScript_MomNoticeGymBroadcast_Female
+	return
+
+	PlayersHouse_1F_EventScript_MomNoticeGymBroadcast_Male::
+	setvar VAR_0x8000, MUGSHOT_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_OhComeQuickly, MSGBOX_DEFAULT
+	callnative ClearMugshot
+	closemessage
+	return
+
+	PlayersHouse_1F_EventScript_MomNoticeGymBroadcast_Female::
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
+	msgbox PlayersHouse_1F_Text_OhComeQuickly, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	return
 
@@ -312,12 +353,46 @@ PlayersHouse_1F_EventScript_Mom::
 	goto_if_set FLAG_RESCUED_BIRCH, PlayersHouse_1F_EventScript_MomHealsParty
 	goto_if_eq VAR_TEMP_1, 1, PlayersHouse_1F_EventScript_SeeYouHoney
 	goto_if_eq VAR_LITTLEROOT_INTRO_STATE, 7, PlayersHouse_1F_EventScript_DidYouMeetProfBirch
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, PlayersHouse_1F_EventScript_Mom_Male
+	goto_if_eq VAR_RESULT, FEMALE, PlayersHouse_1F_EventScript_Mom_Female
+	end
+
+PlayersHouse_1F_EventScript_Mom_Male::
+	setvar VAR_0x8000, MUGSHOT_MOM_HAPPY
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
+	callnative ClearMugshot
+	release
+	end
+
+PlayersHouse_1F_EventScript_Mom_Female::
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SMILE
+	callnative DrawMugshot
+	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	release
 	end
 
 PlayersHouse_1F_EventScript_DontPushYourselfTooHard::
+checkplayergender
+	goto_if_eq VAR_RESULT, MALE, PlayersHouse_1F_EventScript_DontPushYourselfTooHard_Male
+	goto_if_eq VAR_RESULT, FEMALE, PlayersHouse_1F_EventScript_DontPushYourselfTooHard_Female
+	end
+
+PlayersHouse_1F_EventScript_DontPushYourselfTooHard_Male::
+	setvar VAR_0x8000, MUGSHOT_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox PlayersHouse_1F_Text_DontPushYourselfTooHard, MSGBOX_DEFAULT
+	callnative ClearMugshot
+	release
+	end
+
+PlayersHouse_1F_EventScript_DontPushYourselfTooHard_Female::
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
+	msgbox PlayersHouse_1F_Text_DontPushYourselfTooHard, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	release
 	end
 

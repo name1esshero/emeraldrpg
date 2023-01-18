@@ -98,7 +98,10 @@ LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
 	applymovement LOCALID_RIVAL_MOM, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
 	waitmovement 0
 	special GetRivalSonDaughterString
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox RivalsHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	setflag FLAG_MET_RIVAL_MOM
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2
 	releaseall
@@ -120,21 +123,32 @@ RivalsHouse_1F_EventScript_RivalMom::
 	goto_if_set FLAG_SYS_POKEMON_GET, RivalsHouse_1F_EventScript_RivalIsOnRoute103
 	goto_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, RivalsHouse_1F_EventScript_RivalTooBusy
 	special GetRivalSonDaughterString
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox RivalsHouse_1F_Text_LikeChildLikeFather, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	release
 	end
 
 RivalsHouse_1F_EventScript_RivalTooBusy::
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox RivalsHouse_1F_Text_TooBusyToNoticeVisit, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	release
 	end
 
 RivalsHouse_1F_EventScript_RivalIsOnRoute103::
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox RivalsHouse_1F_Text_WentOutToRoute103, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	release
 	end
 
 RivalsHouse_1F_EventScript_GoHomeEverySoOften::
+	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
+	callnative DrawMugshot
 	msgbox RivalsHouse_1F_Text_ShouldGoHomeEverySoOften, MSGBOX_DEFAULT
 	release
 	end
@@ -189,7 +203,10 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	call_if_eq VAR_0x8008, 0, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer0
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer2
+	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
+	callnative DrawMugshot
 	msgbox RivalsHouse_1F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	call_if_eq VAR_0x8008, 0, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs0
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs1
@@ -204,6 +221,7 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
+	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	releaseall
 	end
 

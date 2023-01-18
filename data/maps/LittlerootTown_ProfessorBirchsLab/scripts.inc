@@ -112,9 +112,12 @@ LittlerootTown_ProfessorBirchsLab_OnFrame:
 @ The starter is technically given prior to this on Route 101 by special ChooseStarter
 @ This is just where the game tells you its yours and lets you nickname it
 LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent::
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	lockall
 	bufferleadmonspeciesname STR_VAR_1
 	message LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon
+	callnative ClearMugshot
 	waitmessage
 	playfanfare MUS_OBTAIN_ITEM
 	waitfanfare
@@ -140,20 +143,29 @@ LittlerootTown_ProfessorBirchsLab_EventScript_NicknameStarter_Nuzlocke::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival::
+setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival, MSGBOX_YESNO
+	callnative ClearMugshot
 	goto_if_eq VAR_RESULT, YES, LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival::
+	setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	clearflag FLAG_HIDE_ROUTE_101_BOY
 	setvar VAR_BIRCH_LAB_STATE, 3
 	releaseall
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival::
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay, MSGBOX_YESNO
+	callnative ClearMugshot
 	goto_if_eq VAR_RESULT, YES, LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
 	end
@@ -178,7 +190,10 @@ LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex:
 LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	lockall
 	delay 30
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	applymovement LOCALID_BIRCH, LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes
 	waitmovement 0
@@ -205,14 +220,19 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	playfanfare MUS_OBTAIN_ITEM
 	message LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational
 	waitmessage
 	waitfanfare
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
@@ -223,12 +243,18 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment::
+	setvar VAR_0x8000, MUGSHOT_MAY_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment::
+	setvar VAR_0x8000, MUGSHOT_BRENDAN_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	return
 
@@ -268,7 +294,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForJohtoStarter
 	waitmovement 0
+	setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5
 	releaseall
 	end
@@ -309,7 +338,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Cyndaquil::
 	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	showmonpic SPECIES_CYNDAQUIL, 10, 3
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeCyndaquil, MSGBOX_YESNO
+	callnative ClearMugshot
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_ProfessorBirchsLab_EventScript_TakeYourTime
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_GiveCyndaquil
 	end
@@ -320,7 +352,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Totodile::
 	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	showmonpic SPECIES_TOTODILE, 10, 3
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeTotodile, MSGBOX_YESNO
+	callnative ClearMugshot
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_ProfessorBirchsLab_EventScript_TakeYourTime
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_GiveTotodile
 	end
@@ -331,19 +366,28 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Chikorita::
 	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	showmonpic SPECIES_CHIKORITA, 10, 3
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeChikorita, MSGBOX_YESNO
+	callnative ClearMugshot
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_ProfessorBirchsLab_EventScript_TakeYourTime
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_GiveChikorita
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter::
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BetterLeaveOthersAlone, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	releaseall
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_TakeYourTime::
 	hidemonpic
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_TakeYourTimeAllInvaluable, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	releaseall
 	end
 
@@ -566,12 +610,21 @@ EventScript_RegisterProfBirch::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
+	setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	delay 30
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	closemessage
 	delay 20
 	playse SE_CLICK
@@ -582,9 +635,15 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	delay 10
 	playse SE_CLICK
 	delay 20
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	playfanfare MUS_OBTAIN_ITEM
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	message LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational
+	callnative ClearMugshot
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
@@ -605,7 +664,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
+	setvar VAR_0x8000, MUGSHOT_MAY_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	giveitem ITEM_POKE_BALL, 5
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
@@ -613,7 +675,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
+	setvar VAR_0x8000, MUGSHOT_BRENDAN_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	giveitem ITEM_POKE_BALL, 5
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls, MSGBOX_DEFAULT
@@ -622,9 +687,14 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 	playfanfare MUS_OBTAIN_ITEM
+	setvar VAR_0x8000, MUGSHOT_BIRCH_SERIOUS
+	callnative DrawMugshot
 	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex
+	callnative ClearMugshot
 	waitfanfare
+	callnative DrawMugshot
 	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedDexnav
+	callnative ClearMugshot
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
@@ -637,11 +707,17 @@ LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls::
+	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls::
+setvar VAR_0x8000, MUGSHOT_BRENDAN_POUT
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull, MSGBOX_DEFAULT
+	callnative ClearMugshot
 	return
 
 LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer:

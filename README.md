@@ -71,3 +71,7 @@ A Discord-based ROM hacking community that has many members who hack using the d
 
 [Click here to join the RHH Discord Server!](https://discord.gg/6CzjAG6GZk)
 You can find PRET on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://web.libera.chat/?#pret).
+
+CREDITS:
+RichardPT (Ash Trainer Sprite Front,Back, Overworlds)
+Solo993 (Brendan & May Trainer Sprite Front, Back)

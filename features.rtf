@@ -190,5 +190,59 @@ Sometimes the follower's surf blob won't appear until a menu is entered/exited\p
 Credits:\par
 Skeli / Complete Fire Red Upgrade\par
 Touched for original source\par
+\par
+//Mugshots Information:\par
+\par
+\par
+//Your mugshot images need to be 16-color indexed PNGs. Their width and height must be multiples of 8.\par
+\par
+//(OPTIONAL). Make a new folder called "mugshots" in the graphics folder for your images, you could also just place them in some other folder. (EDIT: I ALREADY DID THIS)\par
+\par
+//1. Add a constant for each image in include/constants/mugshots.h, each with a number one higher than the last:\par
+//#ifndef GUARD_CONSTANTS_MUGSHOT_H\par
+//#define GUARD_CONSTANTS_MUGSHOT_H\par
+\par
+//Add your mugshot constants here\par
+//#define MUGSHOT_BLAINE 0\par
+//#define MUGSHOT_MAZE 1\par
+\par
+//#endif\par
+\par
+//2. Load the image's tiles and palette in src/mugshot.c, above the definition of sMugshots\par
+//static const u32 sMugshotImg_Blaine[] = INCBIN_U32("graphics/mugshots/blaine.4bpp.lz");\par
+//static const u16 sMugshotPal_Blaine[] = INCBIN_U16("graphics/mugshots/blaine.gbapal");\par
+\par
+//static const u32 sMugshotImg_Maze[] = INCBIN_U32("graphics/mugshots/maze.4bpp.lz");\par
+//static const u16 sMugshotPal_Maze[] = INCBIN_U16("graphics/mugshots/maze.gbapal");\par
+//The path in the incbin is the path to your image except "png" is replaced with "4bpp.lz" for the tiles and "gbapal" for the palette.\par
+\par
+\par
+//3. Create mugshot templates in sMugshots in src/mugshot.c using the images and palettes from the last step and the constants from the first step\par
+//static const struct Mugshot sMugshots[] = \{\par
+    //ADD YOUR MUGSHOTS HERE\par
+    //[MUGSHOT_BLAINE] = \{.x = 16, .y = 5, .width = 80, .height = 72, .image = sMugshotImg_Blaine, .palette = sMugshotPal_Blaine\},\par
+    //[MUGSHOT_MAZE] = \{.x = 6, .y = 1, .width = 144, .height = 96, .image = sMugshotImg_Maze, .palette = sMugshotPal_Maze\},\par
+//\};\par
+//Note that x & y are tile coordinates, so the mugshot will be drawn at (8*x, 8*y).\par
+\par
+\par
+//3. Using mugshots in a script\par
+\par
+//There are 3 new functions, which you can call with the callnative command:\par
+//DrawMugshot: draws mugshot that's id is in VAR_0x8000\par
+//DrawMugshotAtPos: draws mugshot that's id is in VAR_0x8000, at coordinates stored in VAR_0x8001 and VAR_0x8002\par
+//ClearMugshot: clears drawn mugshot\par
+\par
+//If a mugshot is drawn while one is already on the screen, the previous one is automatically cleared.\par
+\par
+//Example script:\par
+//setvar VAR_0x8000, MUGSHOT_BLAINE\par
+//callnative DrawMugshot\par
+//msgbox SomeText, MSGBOX_NPC\par
+//callnative ClearMugshot\par
+//end\par
+\par
+//SomeText:\par
+//.string "hi.$"\par
 }
  
