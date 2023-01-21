@@ -2039,6 +2039,9 @@ $(OBJEVENTGFXDIR)/pokemon/riolu.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon/lucario.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon/togekiss.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/pokemon/dialga.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 

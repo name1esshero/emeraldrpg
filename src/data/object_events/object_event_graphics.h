@@ -801,6 +801,7 @@ const u32 gObjectEventPic_Budew[] = INCBIN_U32("graphics/object_events/pics/poke
 const u32 gObjectEventPic_Roserade[] = INCBIN_U32("graphics/object_events/pics/pokemon/roserade.4bpp");
 const u32 gObjectEventPic_Riolu[] = INCBIN_U32("graphics/object_events/pics/pokemon/riolu.4bpp");
 const u32 gObjectEventPic_Lucario[] = INCBIN_U32("graphics/object_events/pics/pokemon/lucario.4bpp");
+const u32 gObjectEventPic_Togekiss[] = INCBIN_U32("graphics/object_events/pics/pokemon/togekiss.4bpp");
 const u32 gObjectEventPic_Dialga[] = INCBIN_U32("graphics/object_events/pics/pokemon/dialga.4bpp");
 const u32 gObjectEventPic_Palkia[] = INCBIN_U32("graphics/object_events/pics/pokemon/palkia.4bpp");
 const u32 gObjectEventPic_Heatran[] = INCBIN_U32("graphics/object_events/pics/pokemon/heatran.4bpp");
