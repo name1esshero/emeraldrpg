@@ -664,14 +664,14 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
-	setvar VAR_0x8000, MUGSHOT_MAY_HAPPY
-	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	giveitem ITEM_POKE_BALL, 5
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
+	setvar VAR_0x8000, MUGSHOT_MAY_HAPPY
+	callnative DrawMugshot
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
+	callnative ClearMugshot
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
