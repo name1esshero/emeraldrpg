@@ -109,7 +109,7 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedBButton = TRUE;
             if (newKeys & R_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))
                 input->pressedRButton = TRUE;
-            if (newKeys & L_BUTTON && !FlagGet(FLAG_DEXNAV))
+            if (heldKeys & B_BUTTON)
                 input->input_field_1_6 = TRUE;
         }
 
