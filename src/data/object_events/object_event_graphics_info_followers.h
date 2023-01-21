@@ -447,6 +447,7 @@ const struct ObjectEventGraphicsInfo gPokemonObjectGraphics[] = {
   [SPECIES_DARKRAI] = {0xFFFF, OBJ_EVENT_PAL_TAG_DYNAMIC, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 2, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Following, sPicTable_Darkrai, gDummySpriteAffineAnimTable},
   [SPECIES_SHAYMIN] = {0xFFFF, OBJ_EVENT_PAL_TAG_DYNAMIC, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 2, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Following, sPicTable_Shaymin, gDummySpriteAffineAnimTable},
   [SPECIES_ARCEUS] = {0xFFFF, OBJ_EVENT_PAL_TAG_DYNAMIC, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 2, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Following, sPicTable_Arceus, gDummySpriteAffineAnimTable},
+  [SPECIES_ROTOM] = {0xFFFF, OBJ_EVENT_PAL_TAG_DYNAMIC, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 2, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_NONE, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Following, sPicTable_Rotom, gDummySpriteAffineAnimTable},
 };
 
 // Normal, sunny, rainy, snowy

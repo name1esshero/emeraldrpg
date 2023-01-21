@@ -2081,6 +2081,9 @@ $(OBJEVENTGFXDIR)/pokemon/shaymin.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon/arceus.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon/rotom.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(MISCGFXDIR)/emotes.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
