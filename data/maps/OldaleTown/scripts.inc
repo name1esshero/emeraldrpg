@@ -264,18 +264,12 @@ OldaleTown_EventScript_ShowRivalMessage::
 	end
 
 OldaleTown_EventScript_ShowMayMessage::
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox OldaleTown_Text_MayLetsGoBack, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	goto OldaleTown_EventScript_RivalFinish
 	end
 
 OldaleTown_EventScript_ShowBrendanMessage::
-	setvar VAR_0x8000, MUGSHOT_BRENDAN_SERIOUS
-	callnative DrawMugshot
 	msgbox OldaleTown_Text_BrendanLetsGoBack, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	goto OldaleTown_EventScript_RivalFinish
 	end
 

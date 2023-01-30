@@ -173,6 +173,13 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, u16 item1, u16 species
     u8 heldItem1[2];
     u8 heldItem2[2];
 
+    if (gSaveBlock1Ptr->tx_Random_Static)
+        species1 = GetSpeciesRandomSeeded(species1, TX_RANDOM_T_STATIC, 0);
+        species2 = GetSpeciesRandomSeeded(species2, TX_RANDOM_T_STATIC, 0);
+    if (gSaveBlock1Ptr->tx_Random_Items)
+        item1 = RandomItemId(item1);
+        item2 = RandomItemId(item2);
+
     ZeroEnemyPartyMons();
 
     CreateMon(&gEnemyParty[0], species1, level1, 32, 0, 0, OT_ID_PLAYER_ID, 0);
@@ -190,6 +197,8 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, u16 item1, u16 species
         heldItem2[1] = item2 >> 8;
         SetMonData(&gEnemyParty[3], MON_DATA_HELD_ITEM, heldItem2);
     }
+
+    SetNuzlockeChecks(); //tx_randomizer_and_challenges
 }
 
 void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot)

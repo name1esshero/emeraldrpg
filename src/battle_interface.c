@@ -3400,7 +3400,7 @@ bool32 CanThrowLastUsedBall(void)
         return FALSE;
     if (!CheckBagHasItem(gLastThrownBall, 1))
         return FALSE;
-
+        
     return TRUE;
 #endif
 }

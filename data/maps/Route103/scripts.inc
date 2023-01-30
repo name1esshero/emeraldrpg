@@ -27,10 +27,7 @@ Route103_EventScript_Rival::
 	end
 
 Route103_EventScript_RivalMay::
-	setvar VAR_0x8000, MUGSHOT_MAY_HAPPY
-	callnative DrawMugshot
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
@@ -39,9 +36,7 @@ Route103_EventScript_RivalMay::
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
-	callnative DrawMugshot
 	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	switch VAR_STARTER_MON
 	case 0, Route103_EventScript_StartMayBattleTreecko
 	case 1, Route103_EventScript_StartMayBattleTorchic
@@ -49,10 +44,7 @@ Route103_EventScript_RivalMay::
 	end
 
 Route103_EventScript_RivalBrendan::
-setvar VAR_0x8000, MUGSHOT_BRENDAN_HAPPY
-	callnative DrawMugshot
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
@@ -61,9 +53,7 @@ setvar VAR_0x8000, MUGSHOT_BRENDAN_HAPPY
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
-	callnative DrawMugshot
 	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	switch VAR_STARTER_MON
 	case 0, Route103_EventScript_StartBrendanBattleTreecko
 	case 1, Route103_EventScript_StartBrendanBattleTorchic
@@ -101,18 +91,12 @@ Route103_EventScript_StartBrendanBattleMudkip::
 	end
 
 Route103_EventScript_AfterMayBattle::
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_AfterBrendanBattle::
-	setvar VAR_0x8000, MUGSHOT_BRENDAN_POUT
-	callnative DrawMugshot
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	goto Route103_EventScript_RivalExit
 	end
 

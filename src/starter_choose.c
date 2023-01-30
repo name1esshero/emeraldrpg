@@ -46,6 +46,7 @@ static void Task_MoveStarterChooseCursor(u8 taskId);
 static void Task_CreateStarterLabel(u8 taskId);
 static void CreateStarterPokemonLabel(u8 selection);
 static u8 CreatePokemonFrontSprite(u16 species, u8 x, u8 y);
+static void SpriteCB_SelectionHand(struct Sprite *sprite);
 static void SpriteCB_Pokeball(struct Sprite *sprite);
 static void SpriteCB_StarterPokemon(struct Sprite *sprite);
 
@@ -219,9 +220,12 @@ static const struct OamData sOam_StarterCircle =
 
 static const u8 sCursorCoords[][2] =
 {
-    {60, 32},
-    {120, 56},
-    {180, 32},
+    {45, 56},
+    {75, 56},
+    {105, 56},
+    {135, 56},
+    {165, 56},
+    {195, 56},
 };
 
 static const union AnimCmd sAnim_Hand[] =
@@ -330,6 +334,17 @@ static const struct SpritePalette sSpritePalettes_StarterChoose[] =
     {},
 };
 
+static const struct SpriteTemplate sSpriteTemplate_Hand =
+{
+    .tileTag = TAG_POKEBALL_SELECT,
+    .paletteTag = TAG_POKEBALL_SELECT,
+    .oam = &sOam_Hand,
+    .anims = sAnims_Hand,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_SelectionHand
+};
+
 static const struct SpriteTemplate sSpriteTemplate_Pokeball =
 {
     .tileTag = TAG_POKEBALL_SELECT,
@@ -425,9 +440,9 @@ void CB2_ChooseStarter(void)
     DmaFill32(3, 0, OAM, OAM_SIZE);
     DmaFill16(3, 0, PLTT, PLTT_SIZE);
 
-    //LZ77UnCompVram(gBirchHelpGfx, (void *)VRAM);
-    //LZ77UnCompVram(gBirchBagTilemap, (void *)(BG_SCREEN_ADDR(6)));
-    //LZ77UnCompVram(gBirchGrassTilemap, (void *)(BG_SCREEN_ADDR(7)));
+    LZ77UnCompVram(gBirchHelpGfx, (void *)VRAM);
+    LZ77UnCompVram(gBirchBagTilemap, (void *)(BG_SCREEN_ADDR(6)));
+    LZ77UnCompVram(gBirchGrassTilemap, (void *)(BG_SCREEN_ADDR(7)));
 
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
@@ -444,7 +459,7 @@ void CB2_ChooseStarter(void)
     ResetAllPicSprites();
 
     LoadPalette(GetOverworldTextboxPalettePtr(), 0xE0, 0x20);
-    //LoadPalette(gBirchBagGrassPal, 0, 0x40);
+    LoadPalette(gBirchBagGrassPal, 0, 0x40);
     LoadCompressedSpriteSheet(&sSpriteSheet_PokeballSelect[0]);
     LoadCompressedSpriteSheet(&sSpriteSheet_StarterCircle[0]);
     LoadSpritePalettes(sSpritePalettes_StarterChoose);
@@ -471,8 +486,8 @@ void CB2_ChooseStarter(void)
     gTasks[taskId].tStarterSelection = 1;
 
     //Create hand sprite
-    //spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 2);
-    //gSprites[spriteId].data[0] = taskId;
+    spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 2);
+    gSprites[spriteId].data[0] = taskId;
 
     // Create three Pokeball sprites
     spriteId = CreateSprite(&sSpriteTemplate_Pokeball, sPokeballCoords[0][0], sPokeballCoords[0][1], 2);
@@ -673,6 +688,15 @@ static u8 CreatePokemonFrontSprite(u16 species, u8 x, u8 y)
     spriteId = CreateMonPicSprite_Affine(species, SHINY_ODDS, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
     gSprites[spriteId].oam.priority = 0;
     return spriteId;
+}
+
+static void SpriteCB_SelectionHand(struct Sprite *sprite)
+{
+    // Float up and down above selected pokeball
+    sprite->x = sCursorCoords[gTasks[sprite->data[0]].tStarterSelection][0];
+    sprite->y = sCursorCoords[gTasks[sprite->data[0]].tStarterSelection][1];
+    sprite->y2 = Sin(sprite->data[1], 8);
+    sprite->data[1] = (u8)(sprite->data[1]) + 4;
 }
 
 static void SpriteCB_Pokeball(struct Sprite *sprite)

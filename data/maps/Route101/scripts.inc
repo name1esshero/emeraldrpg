@@ -22,10 +22,7 @@ Route101_EventScript_HideMapNamePopup::
 Route101_EventScript_StartBirchRescue::
 	lockall
 	playbgm MUS_HELP, TRUE
-	setvar VAR_0x8000, MUGSHOT_BIRCH_SCARED
-	callnative DrawMugshot
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	setobjectxy LOCALID_BIRCH, 0, 15
 	setobjectxy LOCALID_ZIGZAGOON, 0, 16
@@ -41,9 +38,7 @@ Route101_EventScript_StartBirchRescue::
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
 	waitmovement 0
-	callnative DrawMugshot
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	setvar VAR_ROUTE101_STATE, 2
 	releaseall
@@ -51,10 +46,7 @@ Route101_EventScript_StartBirchRescue::
 
 Route101_EventScript_PreventExitSouth::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_BIRCH_SCARED
-	callnative DrawMugshot
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
 	waitmovement 0
@@ -63,10 +55,7 @@ Route101_EventScript_PreventExitSouth::
 
 Route101_EventScript_PreventExitWest::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_BIRCH_SCARED
-	callnative DrawMugshot
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
 	waitmovement 0
@@ -75,10 +64,7 @@ Route101_EventScript_PreventExitWest::
 
 Route101_EventScript_PreventExitNorth::
 	lockall
-	setvar VAR_0x8000, MUGSHOT_BIRCH_SCARED
-	callnative DrawMugshot
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
 	waitmovement 0
@@ -246,10 +232,7 @@ Route101_EventScript_BirchsBag::
 	setflag FLAG_SYS_POKEMON_GET
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
-	callnative DrawMugshot
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	special HealPlayerParty
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH

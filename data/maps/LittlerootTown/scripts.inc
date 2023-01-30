@@ -155,10 +155,7 @@ LittlerootTown_EventScript_GoInsideWithMom::
 	return
 	
 LittlerootTown_EventScript_GoInsideWithMom_Male::
-	setvar VAR_0x8000, MUGSHOT_MOM_HAPPY
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_OurNewHomeLetsGoInside, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachDoor
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_Movement_PlayerApproachDoor
@@ -178,10 +175,7 @@ LittlerootTown_EventScript_GoInsideWithMom_Male::
 	return
 
 LittlerootTown_EventScript_GoInsideWithMom_Female::
-	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SMILE
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_OurNewHomeLetsGoInside, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachDoor
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_Movement_PlayerApproachDoor
@@ -245,10 +239,7 @@ LittlerootTown_EventScript_BeginDexUpgradeScene::
 	applymovement LOCALID_BIRCH, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 80
-	setvar VAR_0x8000, MUGSHOT_BIRCH_HAPPY
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_BirchSomethingToShowYouAtLab, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
@@ -305,7 +296,6 @@ LittlerootTown_EventScript_GoSaveBirch::
 	closemessage
 	applymovement LOCALID_TWIN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
-	startquest QUEST_2
 	setvar VAR_LITTLEROOT_TOWN_STATE, 2
 	release
 	end
@@ -424,7 +414,7 @@ LittlerootTown_EventScript_GoSaveBirchTrigger::
 	closemessage
 	applymovement LOCALID_TWIN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
-	startquest QUEST_2
+
 	setvar VAR_LITTLEROOT_TOWN_STATE, 2
 	releaseall
 	end
@@ -514,10 +504,7 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-	setvar VAR_0x8000, MUGSHOT_MOM_SERIOUS
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_WaitPlayer, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_MomApproachPlayerMale
@@ -939,50 +926,30 @@ LittlerootTown_EventScript_SetReceivedRunningShoes::
 
 LittlerootTown_EventScript_GiveRunningShoes::
 	checkplayergender
-	callnative ClearMugshot
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_GiveRunningShoes_Male
-	callnative ClearMugshot
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_GiveRunningShoes_Female
 	return
 
 LittlerootTown_EventScript_GiveRunningShoes_Male::
-	setvar VAR_0x8000, MUGSHOT_MOM_HAPPY
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	playfanfare MUS_OBTAIN_ITEM
 	message LittlerootTown_Text_SwitchShoesWithRunningShoes
 	waitfanfare
 	setflag FLAG_RECEIVED_RUNNING_SHOES
-	setvar VAR_0x8000, MUGSHOT_MOM_HAPPY
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_MOM_SERIOUS
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	delay 30
 	return
 
 LittlerootTown_EventScript_GiveRunningShoes_Female::
-	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SMILE
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	playfanfare MUS_OBTAIN_ITEM
 	message LittlerootTown_Text_SwitchShoesWithRunningShoes
 	waitfanfare
 	setflag FLAG_RECEIVED_RUNNING_SHOES
-	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SMILE
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
-	callnative ClearMugshot
-	setvar VAR_0x8000, MUGSHOT_RIVAL_MOM_SERIOUS
-	callnative DrawMugshot
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	delay 30
 	return

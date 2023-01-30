@@ -947,9 +947,9 @@ static void CB2_GiveStarter(void)
     starterMon = GetStarterPokemon(gSpecialVar_Result);
     ScriptGiveMon(starterMon, 5, ITEM_NONE, 0, 0, 0);
     ResetTasks();
-    //PlayBattleBGM();
+    PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);
-    BeginNormalPaletteFade(0xFFFFFFFF, -1, 0, 0x10, 0);
+    BattleTransition_Start(B_TRANSITION_BLUR);
 }
 
 static void CB2_StartFirstBattle(void)
@@ -957,12 +957,12 @@ static void CB2_StartFirstBattle(void)
     UpdatePaletteFade();
     RunTasks();
 
-    if (!gPaletteFade.active)
+    if (IsBattleTransitionDone() == TRUE)
     {
         gBattleTypeFlags = BATTLE_TYPE_FIRST_BATTLE;
         gMain.savedCallback = CB2_EndFirstBattle;
         FreeAllWindowBuffers();
-        SetMainCallback2(CB2_EndFirstBattle);
+        SetMainCallback2(CB2_InitBattle);
         RestartWildEncounterImmunitySteps();
         ClearPoisonStepCounter();
         IncrementGameStat(GAME_STAT_TOTAL_BATTLES);

@@ -84,15 +84,11 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth
 	waitmovement 0
-	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth::
@@ -100,15 +96,11 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMaySouth
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth
 	waitmovement 0
-	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest::
@@ -116,14 +108,10 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest
 	waitmovement 0
-	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast::
@@ -131,15 +119,11 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast
 	waitmovement 0
-	questmenu QUEST_MENU_COMPLETE_QUEST QUEST_1
 	return
 
 LittlerootTown_MaysHouse_2F_Movement_MayEnters:
@@ -260,18 +244,12 @@ RivalsHouse_2F_EventScript_Rival::
 	end
 
 RivalsHouse_2F_EventScript_May::
-setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayGettingReady, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	releaseall
 	end
 
 RivalsHouse_2F_EventScript_Brendan::
-setvar VAR_0x8000, MUGSHOT_BRENDAN_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_BrendanGettingReady, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	releaseall
 	end
 
@@ -287,32 +265,20 @@ RivalsHouse_2F_EventScript_RivalPostLilycove::
 
 RivalsHouse_2F_EventScript_MayPostLilycove::
 	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_MayWhereShouldIGoNext
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayJustCheckingMyPokedex, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	return
 
 RivalsHouse_2F_EventScript_BrendanPostLilycove::
 	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext
-	setvar VAR_0x8000, MUGSHOT_BRENDAN_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	return
 
 RivalsHouse_2F_EventScript_MayWhereShouldIGoNext::
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_MayWhereShouldIGoNext, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	return
 
 RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext::
-	setvar VAR_0x8000, MUGSHOT_MAY_SERIOUS
-	callnative DrawMugshot
 	msgbox RivalsHouse_2F_Text_BrendanWhereShouldIGoNext, MSGBOX_DEFAULT
-	callnative ClearMugshot
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_PC::
